@@ -115,10 +115,10 @@ public class MainActivity extends Activity implements SensorEventListener {
 
             if (deltaY < 2) {
                 deltaY = 0;
-            } else if {
-                
-            } else {
+            } else if (deltaY > 4){
                 trackY = 10;
+            } else {
+
             }
 
             if (deltaZ < 2) {
