@@ -1,0 +1,13 @@
+Example for syntax structure for running the script
+that will move to the next slide in an active powerpoint
+presentation whenever the specified file changes.
+
+It takes in 2 arguments
+- the location of the file to monitor for changes
+- the command to run once the file changes
+
+To run for the powerpoint use case change temp.txt
+below with the location of the file to monitor
+for changes
+
+./monitor.sh temp.txt osascript next_slide.scpt 
