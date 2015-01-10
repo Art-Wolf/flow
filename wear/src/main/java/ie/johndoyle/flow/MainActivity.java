@@ -51,6 +51,8 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     public Vibrator v;
 
+    private int startpresentation = 0;
+
     private static final int SPEECH_REQUEST_CODE = 0;
 
     // Create an intent that can start the Speech Recognizer activity
@@ -68,10 +70,9 @@ public class MainActivity extends Activity implements SensorEventListener {
             List<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             String spokenText = results.get(0);
 
-            if (spokenText == "start presentation") {
+            if (spokenText.equals("start presentation")) {
                 Log.i("Flow-Present-Start", spokenText);
-            } else if (spokenText == "stop presentation") {
-                Log.i("Flow-Present-Stop", spokenText);
+                startpresentation = 1;
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -148,7 +149,7 @@ public class MainActivity extends Activity implements SensorEventListener {
         // display the current x,y,z accelerometer values
         displayCurrentValues();
 
-        if (sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+        if (sensor.getType() == Sensor.TYPE_ACCELEROMETER && startpresentation == 1) {
 
             // get the change of the x,y,z values of the accelerometer
             deltaX = event.values[0];//Math.abs(lastX - event.values[0]);
