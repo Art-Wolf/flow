@@ -52,6 +52,7 @@ public class MainActivity extends Activity implements SensorEventListener {
     public Vibrator v;
 
     private int startpresentation = 0;
+    private int training = 0;
 
     private static final int SPEECH_REQUEST_CODE = 0;
 
@@ -70,9 +71,18 @@ public class MainActivity extends Activity implements SensorEventListener {
             List<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
             String spokenText = results.get(0);
 
-            if (spokenText.equals("start presentation")) {
+            if (spokenText.equals("presentation")) {
                 Log.i("Flow-Present-Start", spokenText);
                 startpresentation = 1;
+            } 
+            if (spokenText.equals("start")) {
+                Log.i("Flow-Training", spokenText);
+                training = 1;
+            }
+
+            if (spokenText.equals("stop")) {
+                Log.i("Flow-Training", spokenText);
+                training = 0;
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
@@ -114,13 +124,13 @@ public class MainActivity extends Activity implements SensorEventListener {
     }
 
     public void initializeViews() {
-        currentX = (TextView) findViewById(R.id.currentX);
-        currentY = (TextView) findViewById(R.id.currentY);
-        currentZ = (TextView) findViewById(R.id.currentZ);
-        currentGX = (TextView) findViewById(R.id.currentGX);
-        currentGY = (TextView) findViewById(R.id.currentGY);
-        currentGZ = (TextView) findViewById(R.id.currentGZ);
-        nextSlide = (TextView) findViewById(R.id.nextSlide);
+//        currentX = (TextView) findViewById(R.id.currentX);
+//        currentY = (TextView) findViewById(R.id.currentY);
+//        currentZ = (TextView) findViewById(R.id.currentZ);
+//        currentGX = (TextView) findViewById(R.id.currentGX);
+//        currentGY = (TextView) findViewById(R.id.currentGY);
+//        currentGZ = (TextView) findViewById(R.id.currentGZ);
+//        nextSlide = (TextView) findViewById(R.id.nextSlide);
     }
 
     protected void onResume() {
@@ -149,6 +159,15 @@ public class MainActivity extends Activity implements SensorEventListener {
         // display the current x,y,z accelerometer values
         displayCurrentValues();
 
+        if (sensor.getType() == Sensor.TYPE_ACCELEROMETER && training == 1) {
+            calendar = Calendar.getInstance();
+            now = calendar.getTime();
+            Timestamp timestampNow = new Timestamp(now.getTime());
+            Log.i("Flow-Training", timestampNow.toString() + "\t " +
+                       Float.toString(event.values[0]) + "\t" +
+                       Float.toString(event.values[1]) + "\t" +
+                       Float.toString(event.values[2]));
+        }
         if (sensor.getType() == Sensor.TYPE_ACCELEROMETER && startpresentation == 1) {
 
             // get the change of the x,y,z values of the accelerometer

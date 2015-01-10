@@ -5,146 +5,146 @@
 
     <TextView android:id="@+id/accelerationTitle" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Acceleration"
+        android:text="Speak to Launch"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="X:"
-        android:id="@+id/textX"
-        android:layout_below="@+id/accelerationTitle"
-        android:layout_toStartOf="@+id/accelerationTitle" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="X:"-->
+        <!--android:id="@+id/textX"-->
+        <!--android:layout_below="@+id/accelerationTitle"-->
+        <!--android:layout_toStartOf="@+id/accelerationTitle" />-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Y:"
-        android:id="@+id/textY"
-        android:layout_below="@+id/textX"
-        android:layout_alignStart="@+id/textX"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Y:"-->
+        <!--android:id="@+id/textY"-->
+        <!--android:layout_below="@+id/textX"-->
+        <!--android:layout_alignStart="@+id/textX"/>-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Z:"
-        android:id="@+id/textZ"
-        android:layout_below="@+id/textY"
-        android:layout_alignStart="@+id/textY" />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="X"
-        android:id="@+id/currentX"
-        android:layout_below="@+id/accelerationTitle"
-        android:layout_toEndOf="@+id/textX" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Y"
-        android:id="@+id/currentY"
-        android:layout_below="@+id/currentX"
-        android:layout_toEndOf="@+id/textY" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Z"
-        android:id="@+id/currentZ"
-        android:layout_below="@+id/currentY"
-        android:layout_toEndOf="@+id/textZ" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Gyroscope"
-        android:id="@+id/gyroText"
-        android:layout_below="@+id/textZ"
-        android:layout_alignEnd="@+id/accelerationTitle" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Z:"-->
+        <!--android:id="@+id/textZ"-->
+        <!--android:layout_below="@+id/textY"-->
+        <!--android:layout_alignStart="@+id/textY" />-->
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="X:"
-        android:id="@+id/textGX"
-        android:layout_below="@+id/gyroText"
-        android:layout_toStartOf="@+id/gyroText" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="X"-->
+        <!--android:id="@+id/currentX"-->
+        <!--android:layout_below="@+id/accelerationTitle"-->
+        <!--android:layout_toEndOf="@+id/textX" />-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Y:"
-        android:id="@+id/textGY"
-        android:layout_below="@+id/textGX"
-        android:layout_alignStart="@+id/textGX"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Y"-->
+        <!--android:id="@+id/currentY"-->
+        <!--android:layout_below="@+id/currentX"-->
+        <!--android:layout_toEndOf="@+id/textY" />-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Z:"
-        android:id="@+id/textGZ"
-        android:layout_below="@+id/textGY"
-        android:layout_alignStart="@+id/textGY" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Z"-->
+        <!--android:id="@+id/currentZ"-->
+        <!--android:layout_below="@+id/currentY"-->
+        <!--android:layout_toEndOf="@+id/textZ" />-->
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="X"
-        android:id="@+id/currentGX"
-        android:layout_below="@+id/gyroText"
-        android:layout_toEndOf="@+id/textGX" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Y"
-        android:id="@+id/currentGY"
-        android:layout_below="@+id/currentGX"
-        android:layout_toEndOf="@+id/textGY" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Z"
-        android:id="@+id/currentGZ"
-        android:layout_below="@+id/currentGY"
-        android:layout_toEndOf="@+id/textGZ" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Gyroscope"-->
+        <!--android:id="@+id/gyroText"-->
+        <!--android:layout_below="@+id/textZ"-->
+        <!--android:layout_alignEnd="@+id/accelerationTitle" />-->
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Next Slide:"
-        android:id="@+id/nextSlideText"
-        android:layout_below="@+id/currentGZ"
-        android:layout_alignLeft="@+id/textGZ" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="false"
-        android:id="@+id/nextSlide"
-        android:layout_below="@+id/textGZ"
-        android:layout_toEndOf="@+id/nextSlideText"/>
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="X:"-->
+        <!--android:id="@+id/textGX"-->
+        <!--android:layout_below="@+id/gyroText"-->
+        <!--android:layout_toStartOf="@+id/gyroText" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Y:"-->
+        <!--android:id="@+id/textGY"-->
+        <!--android:layout_below="@+id/textGX"-->
+        <!--android:layout_alignStart="@+id/textGX"/>-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Z:"-->
+        <!--android:id="@+id/textGZ"-->
+        <!--android:layout_below="@+id/textGY"-->
+        <!--android:layout_alignStart="@+id/textGY" />-->
+
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="X"-->
+        <!--android:id="@+id/currentGX"-->
+        <!--android:layout_below="@+id/gyroText"-->
+        <!--android:layout_toEndOf="@+id/textGX" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Y"-->
+        <!--android:id="@+id/currentGY"-->
+        <!--android:layout_below="@+id/currentGX"-->
+        <!--android:layout_toEndOf="@+id/textGY" />-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Z"-->
+        <!--android:id="@+id/currentGZ"-->
+        <!--android:layout_below="@+id/currentGY"-->
+        <!--android:layout_toEndOf="@+id/textGZ" />-->
+
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="Next Slide:"-->
+        <!--android:id="@+id/nextSlideText"-->
+        <!--android:layout_below="@+id/currentGZ"-->
+        <!--android:layout_alignLeft="@+id/textGZ" />-->
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+        <!--android:text="false"-->
+        <!--android:id="@+id/nextSlide"-->
+        <!--android:layout_below="@+id/textGZ"-->
+        <!--android:layout_toEndOf="@+id/nextSlideText"/>-->
 </RelativeLayout>
