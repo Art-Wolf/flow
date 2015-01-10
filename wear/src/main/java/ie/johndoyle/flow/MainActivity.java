@@ -74,7 +74,7 @@ public class MainActivity extends Activity implements SensorEventListener {
             if (spokenText.equals("presentation")) {
                 Log.i("Flow-Present-Start", spokenText);
                 startpresentation = 1;
-            } 
+            }
             if (spokenText.equals("start")) {
                 Log.i("Flow-Training", spokenText);
                 training = 1;
@@ -83,6 +83,7 @@ public class MainActivity extends Activity implements SensorEventListener {
             if (spokenText.equals("stop")) {
                 Log.i("Flow-Training", spokenText);
                 training = 0;
+                startpresentation = 0;
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
