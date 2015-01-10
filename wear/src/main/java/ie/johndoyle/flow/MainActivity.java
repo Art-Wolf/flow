@@ -2,20 +2,24 @@ package ie.johndoyle.flow;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.speech.RecognizerIntent;
 import android.support.wearable.view.WatchViewStub;
 import android.util.Log;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
 import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends Activity implements SensorEventListener {
 
@@ -43,14 +47,40 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     private float vibrateThreshold = 0;
 
-    private TextView currentX, currentY, currentZ, currentGX, currentGY, currentGZ, nextSlide;
+    private TextView currentX, currentY, currentZ, currentGX, currentGY, currentGZ, nextSlide, mTextView;
 
     public Vibrator v;
+
+    private static final int SPEECH_REQUEST_CODE = 0;
+
+    // Create an intent that can start the Speech Recognizer activity
+    private void displaySpeechRecognizer() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        // Start the activity, the intent will be populated with the speech text
+        startActivityForResult(intent, SPEECH_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == SPEECH_REQUEST_CODE && resultCode == RESULT_OK) {
+            List<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            String spokenText = results.get(0);
+
+            if (spokenText == "start presentation") {
+                Log.i("Flow-Present-Start", spokenText);
+            } else if (spokenText == "stop presentation") {
+                Log.i("Flow-Present-Stop", spokenText);
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.round_activity_main);
+        setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         initializeViews();
 
@@ -66,6 +96,20 @@ public class MainActivity extends Activity implements SensorEventListener {
         }
 
         v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+
+        final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
+        stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
+            @Override
+            public void onLayoutInflated(WatchViewStub stub) {
+                mTextView = (TextView) stub.findViewById(R.id.accelerationTitle);
+                mTextView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        displaySpeechRecognizer();
+                    }
+                });
+            }
+        });
     }
 
     public void initializeViews() {
@@ -150,56 +194,58 @@ public class MainActivity extends Activity implements SensorEventListener {
                 //Log.i("Flow", "Z:" + Float.toString(deltaZ));
                 trackY = 0;
             }
-        } else if (sensor.getType() == Sensor.TYPE_GYROSCOPE) {
-            // get the change of the x,y,z values of the accelerometer
-            deltaGX = Math.abs(lastGX - event.values[0]);
-            deltaGY = Math.abs(lastGY - event.values[1]);
-            deltaGZ = Math.abs(lastGZ - event.values[2]);
-
-            lastGX = event.values[0];
-            lastGY = event.values[1];
-            lastGZ = event.values[2];
-
-            // if the change is below 2, it is just plain noise
-            if (deltaGX < 2)
-                deltaGX = 0;
-            if (deltaGY < 2)
-                deltaGY = 0;
-            if ((deltaGZ > vibrateThreshold) || (deltaGY > vibrateThreshold) || (deltaGZ > vibrateThreshold)) {
-                v.vibrate(50);
-            }
         }
+//        else if (sensor.getType() == Sensor.TYPE_GYROSCOPE) {
+//            // get the change of the x,y,z values of the accelerometer
+//            deltaGX = Math.abs(lastGX - event.values[0]);
+//            deltaGY = Math.abs(lastGY - event.values[1]);
+//            deltaGZ = Math.abs(lastGZ - event.values[2]);
+//
+//            lastGX = event.values[0];
+//            lastGY = event.values[1];
+//            lastGZ = event.values[2];
+//
+//            // if the change is below 2, it is just plain noise
+//            if (deltaGX < 2)
+//                deltaGX = 0;
+//            if (deltaGY < 2)
+//                deltaGY = 0;
+//            if ((deltaGZ > vibrateThreshold) || (deltaGY > vibrateThreshold) || (deltaGZ > vibrateThreshold)) {
+//                v.vibrate(50);
+//            }
+//        }
 
     }
 
     public void displayCleanValues() {
-        currentX.setText("0.0");
-        currentY.setText("0.0");
-        currentZ.setText("0.0");
-        currentGX.setText("0.0");
-        currentGY.setText("0.0");
-        currentGZ.setText("0.0");
+
+    //    currentX.setText("0.0");
+    //    currentY.setText("0.0");
+    //    currentZ.setText("0.0");
+    //    currentGX.setText("0.0");
+    //    currentGY.setText("0.0");
+    //    currentGZ.setText("0.0");
     }
 
     // display the current x,y,z accelerometer values
     public void displayCurrentValues() {
-        currentX.setText(Float.toString(deltaX));
-        currentY.setText(Float.toString(deltaY));
-        currentZ.setText(Float.toString(deltaZ));
-        currentGX.setText(Float.toString(deltaGX));
-        currentGY.setText(Float.toString(deltaGY));
-        currentGZ.setText(Float.toString(deltaGZ));
+    //    currentX.setText(Float.toString(deltaX));
+    //    currentY.setText(Float.toString(deltaY));
+    //    currentZ.setText(Float.toString(deltaZ));
+    //    currentGX.setText(Float.toString(deltaGX));
+    //    currentGY.setText(Float.toString(deltaGY));
+    //    currentGZ.setText(Float.toString(deltaGZ));
 
         if (trackX > 0) {
-            nextSlide.setText("True: X");
+    //        nextSlide.setText("True: X");
            // Log.i("Flow", "Next Slide: X");
             //trackX = 0;
         } else if (trackY > 0) {
-            nextSlide.setText("True: Y");
+    //        nextSlide.setText("True: Y");
            // Log.i("Flow", "Next Slide: Y");
             //trackY = 0;
         } else if (trackZ > 0) {
-            nextSlide.setText("True: Z");
+    //        nextSlide.setText("True: Z");
            // Log.i("Flow", "Next Slide: Z");
             //trackZ = 0;
         }
