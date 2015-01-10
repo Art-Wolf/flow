@@ -32,6 +32,8 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     Date now = calendar.getTime();
     private long starttime = now.getTime();
+    private long currenttime = now.getTime();
+
 
     private float trackX = 0;
     private float trackY = 0;
@@ -53,6 +55,9 @@ public class MainActivity extends Activity implements SensorEventListener {
 
     private int startpresentation = 0;
     private int training = 0;
+
+    private int action1 = 0;
+    private int action2 = 0;
 
     private static final int SPEECH_REQUEST_CODE = 0;
 
@@ -180,7 +185,48 @@ public class MainActivity extends Activity implements SensorEventListener {
             lastY = event.values[1];
             lastZ = event.values[2];
 
+//            if ((deltaX <= -5 && deltaX >= -15) &&
+//                (deltaY <= 0 && deltaY >= -5) &&
+//                (deltaZ <= 5 && deltaZ >= -5) ) {
+//                if (action1 == 0) {action1 = 1; v.vibrate(100);}
+//                if (action1 ==1 && ((currenttime - starttime)) >= 300) {action1 = 0;}
+//                    calendar = Calendar.getInstance();
+//                    now = calendar.getTime();
+//                    starttime = now.getTime();
+//
+//
+//            }
+//
+//            if ((deltaY <= 25 && deltaY >= 5) &&
+//                    (deltaZ <= -15 && deltaZ >= -60) &&
+//                    action1 == 1) {
+//                calendar = Calendar.getInstance();
+//                now = calendar.getTime();
+//                currenttime = now.getTime();
+//                if (((currenttime - starttime)) <= 300) {
+//                // && ((currenttime - starttime)) <= 500) {
+//                    Log.i("Flow", "Next Slide: Y");
+//
+//                    v.vibrate(100);
+//                    action1 = 0;
+//                }
+//
+//            }
 
+//            if ((deltaY <= -5 && deltaY >= -30) &&
+//                    (deltaZ <= 10 && deltaZ >= -10) &&
+//                    action1 == 1) {
+//                calendar = Calendar.getInstance();
+//                now = calendar.getTime();
+//                currenttime = now.getTime();
+//                if (((currenttime - starttime)) <= 300) { // && ((currenttime - starttime)) <= 500) {
+//                    Log.i("Flow-Switch", "Chrome");
+//
+//                    v.vibrate(100);
+//                    action1 = 0;
+//                }
+//
+//            }
             if (deltaY < -4 && trackY == 0) {
                 trackY = 1;
                 calendar = Calendar.getInstance();
@@ -201,10 +247,10 @@ public class MainActivity extends Activity implements SensorEventListener {
 
                 calendar = Calendar.getInstance();
                 now = calendar.getTime();
-                long currenttime = now.getTime();
+                 currenttime = now.getTime();
                 if (((starttime - currenttime)/1000) >= -1) {
                     Log.i("Flow", "Next Slide: Y");
-
+//
                     v.vibrate(100);
                 }
                 //Log.i("Flow", "starttime: " + starttime);
