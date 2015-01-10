@@ -129,4 +129,22 @@
         android:id="@+id/currentGZ"
         android:layout_below="@+id/currentGY"
         android:layout_toEndOf="@+id/textGZ" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Next Slide:"
+        android:id="@+id/nextSlideText"
+        android:layout_below="@+id/currentGZ"
+        android:layout_alignLeft="@+id/textGZ" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="false"
+        android:id="@+id/nextSlide"
+        android:layout_below="@+id/textGZ"
+        android:layout_toEndOf="@+id/nextSlideText"/>
 </RelativeLayout>
