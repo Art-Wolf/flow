@@ -98,9 +98,9 @@ public class MainActivity extends Activity implements SensorEventListener {
         if (sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 
             // get the change of the x,y,z values of the accelerometer
-            deltaX = lastX - event.values[0];//Math.abs(lastX - event.values[0]);
-            deltaY = lastY - event.values[1];
-            deltaZ = lastZ - event.values[2];
+            deltaX = event.values[0];//Math.abs(lastX - event.values[0]);
+            deltaY = event.values[1];
+            deltaZ = event.values[2];
 
             lastX = event.values[0];
             lastY = event.values[1];
@@ -108,27 +108,34 @@ public class MainActivity extends Activity implements SensorEventListener {
 
             // if the change is below 2, it is just plain noise
             if (deltaX < 2) {
-                deltaX = 0;
+              //  deltaX = 0;
             } else {
                 trackX = 10;
             }
 
-            if (deltaY < 2) {
-                deltaY = 0;
-            } else if (deltaY > 4){
-                trackY = 10;
-            } else {
 
+
+            if (deltaY < 0 && trackY == 0) {
+                trackY = 1;
+                Log.i("Flow", "Initial stage!");
+            }
+
+            if (trackY ==1 && deltaY > 8) {
+                trackY = 2;
+                Log.i("Flow", "Success stage!");
             }
 
             if (deltaZ < 2) {
-                deltaZ = 0;
+            //    deltaZ = 0;
             } else {
                 trackZ = 10;
             }
 
-            if ((deltaZ > vibrateThreshold) || (deltaY > vibrateThreshold) || (deltaZ > vibrateThreshold)) {
+            //if ((deltaZ > vibrateThreshold) || (deltaY > vibrateThreshold) || (deltaZ > vibrateThreshold)) {
+            if (trackY == 2) {
+                Log.i("Flow", "Next Slide: Y");
                 v.vibrate(50);
+                trackY = 0;
             }
         } else if (sensor.getType() == Sensor.TYPE_GYROSCOPE) {
             // get the change of the x,y,z values of the accelerometer
@@ -172,15 +179,15 @@ public class MainActivity extends Activity implements SensorEventListener {
 
         if (trackX > 0) {
             nextSlide.setText("True: X");
-            Log.i("Flow", "Next Slide: X");
+           // Log.i("Flow", "Next Slide: X");
             trackX = 0;
         } else if (trackY > 0) {
             nextSlide.setText("True: Y");
-            Log.i("Flow", "Next Slide: Y");
+           // Log.i("Flow", "Next Slide: Y");
             trackY = 0;
         } else if (trackZ > 0) {
             nextSlide.setText("True: Z");
-            Log.i("Flow", "Next Slide: Z");
+           // Log.i("Flow", "Next Slide: Z");
             trackZ = 0;
         }
     }
