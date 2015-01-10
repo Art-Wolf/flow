@@ -11,5 +11,5 @@ while : ; do
         touch -r "$f" "$tmpf"
         $@
     fi
-    sleep 0.5
+    sleep 0.1
 done
