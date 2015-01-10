@@ -160,7 +160,7 @@ public class MainActivity extends Activity implements SensorEventListener {
 
         if (trackX > 20) {
             nextSlide.setText("True");
-            Log.i("Flow", "Next Slide");
+            Log.i("Flow", "Next Slide, bitches!");
         } else if (trackX == 0) {
             nextSlide.setText("False");
         }
