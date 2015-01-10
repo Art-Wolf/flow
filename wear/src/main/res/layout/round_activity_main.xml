@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context=".MainActivity" tools:deviceIds="wear_round">
+
+    <TextView android:id="@+id/accelerationTitle" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acceleration"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="X:"
+        android:id="@+id/textX"
+        android:layout_below="@+id/accelerationTitle"
+        android:layout_toStartOf="@+id/accelerationTitle" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Y:"
+        android:id="@+id/textY"
+        android:layout_below="@+id/textX"
+        android:layout_alignStart="@+id/textX"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Z:"
+        android:id="@+id/textZ"
+        android:layout_below="@+id/textY"
+        android:layout_alignStart="@+id/textY" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="X"
+        android:id="@+id/currentX"
+        android:layout_below="@+id/accelerationTitle"
+        android:layout_toEndOf="@+id/textX" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Y"
+        android:id="@+id/currentY"
+        android:layout_below="@+id/currentX"
+        android:layout_toEndOf="@+id/textY" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Z"
+        android:id="@+id/currentZ"
+        android:layout_below="@+id/currentY"
+        android:layout_toEndOf="@+id/textZ" />
+</RelativeLayout>
