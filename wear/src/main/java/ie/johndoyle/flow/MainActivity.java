@@ -118,24 +118,36 @@ public class MainActivity extends Activity implements SensorEventListener {
 
             if (deltaY < -4 && trackY == 0) {
                 trackY = 1;
+                calendar = Calendar.getInstance();
+                now = calendar.getTime();
                 starttime = now.getTime();
-                Log.i("Flow", "Initial stage!");
+                //Log.i("Flow", "Initial stage!");
+                //Log.i("Flow", "starttime: " + starttime);
+                v.vibrate(100);
             }
 
             if (trackY ==1 && deltaY > 1) {
                 trackY = 2;
-                Log.i("Flow", "Success stage!");
+                //Log.i("Flow", "Success stage!");
             }
 
             //if ((deltaZ > vibrateThreshold) || (deltaY > vibrateThreshold) || (deltaZ > vibrateThreshold)) {
             if (trackY == 2) {
-                Log.i("Flow", "Next Slide: Y");
+
+                calendar = Calendar.getInstance();
+                now = calendar.getTime();
                 long currenttime = now.getTime();
-                Log.i("Flow", "Duration: " + (starttime - currenttime)/1000);
-                Log.i("Flow", "X:" + Float.toString(deltaX));
-                Log.i("Flow", "Y:" + Float.toString(deltaY));
-                Log.i("Flow", "Z:" + Float.toString(deltaZ));
-                v.vibrate(50);
+                if (((starttime - currenttime)/1000) >= -1) {
+                    Log.i("Flow", "Next Slide: Y");
+
+                    v.vibrate(100);
+                }
+                //Log.i("Flow", "starttime: " + starttime);
+                //Log.i("Flow", "currenttime: " + currenttime);
+                //Log.i("Flow", "Duration: " + (starttime - currenttime)/1000);
+                //Log.i("Flow", "X:" + Float.toString(deltaX));
+                //Log.i("Flow", "Y:" + Float.toString(deltaY));
+                //Log.i("Flow", "Z:" + Float.toString(deltaZ));
                 trackY = 0;
             }
         } else if (sensor.getType() == Sensor.TYPE_GYROSCOPE) {
