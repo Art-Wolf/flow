@@ -21,6 +21,8 @@ public class MainActivity extends Activity implements SensorEventListener {
     private Sensor gyro;
 
     private float trackX = 0;
+    private float trackY = 0;
+    private float trackZ = 0;
 
     private float deltaX = 0;
     private float deltaY = 0;
@@ -97,24 +99,34 @@ public class MainActivity extends Activity implements SensorEventListener {
 
             // get the change of the x,y,z values of the accelerometer
             deltaX = lastX - event.values[0];//Math.abs(lastX - event.values[0]);
-            deltaY = Math.abs(lastY - event.values[1]);
+            deltaY = lastY - event.values[1];
             deltaZ = lastZ - event.values[2];
 
             lastX = event.values[0];
             lastY = event.values[1];
             lastZ = event.values[2];
 
-            if (deltaZ >= 1) {
-                trackX += deltaZ;
-            }
-            else if (deltaZ >= 0) {}
-            else { trackX = 0; }
-
             // if the change is below 2, it is just plain noise
-            if (deltaX < 2)
+            if (deltaX < 2) {
                 deltaX = 0;
-            if (deltaY < 2)
+            } else {
+                trackX = 10;
+            }
+
+            if (deltaY < 2) {
                 deltaY = 0;
+            } else if {
+                
+            } else {
+                trackY = 10;
+            }
+
+            if (deltaZ < 2) {
+                deltaZ = 0;
+            } else {
+                trackZ = 10;
+            }
+
             if ((deltaZ > vibrateThreshold) || (deltaY > vibrateThreshold) || (deltaZ > vibrateThreshold)) {
                 v.vibrate(50);
             }
@@ -158,11 +170,18 @@ public class MainActivity extends Activity implements SensorEventListener {
         currentGY.setText(Float.toString(deltaGY));
         currentGZ.setText(Float.toString(deltaGZ));
 
-        if (trackX > 20) {
-            nextSlide.setText("True");
-            Log.i("Flow", "Next Slide");
-        } else if (trackX == 0) {
-            nextSlide.setText("False");
+        if (trackX > 0) {
+            nextSlide.setText("True: X");
+            Log.i("Flow", "Next Slide: X");
+            trackX = 0;
+        } else if (trackY > 0) {
+            nextSlide.setText("True: Y");
+            Log.i("Flow", "Next Slide: Y");
+            trackY = 0;
+        } else if (trackZ > 0) {
+            nextSlide.setText("True: Z");
+            Log.i("Flow", "Next Slide: Z");
+            trackZ = 0;
         }
     }
 }
