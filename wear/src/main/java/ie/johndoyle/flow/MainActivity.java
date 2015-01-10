@@ -13,12 +13,21 @@ import android.util.Log;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity extends Activity implements SensorEventListener {
 
     private float lastX, lastY, lastZ, lastGX, lastGY, lastGZ;
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private Sensor gyro;
+
+    Calendar calendar = Calendar.getInstance();
+
+    Date now = calendar.getTime();
+    private long starttime = now.getTime();
 
     private float trackX = 0;
     private float trackY = 0;
@@ -106,34 +115,26 @@ public class MainActivity extends Activity implements SensorEventListener {
             lastY = event.values[1];
             lastZ = event.values[2];
 
-            // if the change is below 2, it is just plain noise
-            if (deltaX < 2) {
-              //  deltaX = 0;
-            } else {
-                trackX = 10;
-            }
 
-
-
-            if (deltaY < 0 && trackY == 0) {
+            if (deltaY < -4 && trackY == 0) {
                 trackY = 1;
+                starttime = now.getTime();
                 Log.i("Flow", "Initial stage!");
             }
 
-            if (trackY ==1 && deltaY > 8) {
+            if (trackY ==1 && deltaY > 1) {
                 trackY = 2;
                 Log.i("Flow", "Success stage!");
-            }
-
-            if (deltaZ < 2) {
-            //    deltaZ = 0;
-            } else {
-                trackZ = 10;
             }
 
             //if ((deltaZ > vibrateThreshold) || (deltaY > vibrateThreshold) || (deltaZ > vibrateThreshold)) {
             if (trackY == 2) {
                 Log.i("Flow", "Next Slide: Y");
+                long currenttime = now.getTime();
+                Log.i("Flow", "Duration: " + (starttime - currenttime)/1000);
+                Log.i("Flow", "X:" + Float.toString(deltaX));
+                Log.i("Flow", "Y:" + Float.toString(deltaY));
+                Log.i("Flow", "Z:" + Float.toString(deltaZ));
                 v.vibrate(50);
                 trackY = 0;
             }
@@ -180,15 +181,15 @@ public class MainActivity extends Activity implements SensorEventListener {
         if (trackX > 0) {
             nextSlide.setText("True: X");
            // Log.i("Flow", "Next Slide: X");
-            trackX = 0;
+            //trackX = 0;
         } else if (trackY > 0) {
             nextSlide.setText("True: Y");
            // Log.i("Flow", "Next Slide: Y");
-            trackY = 0;
+            //trackY = 0;
         } else if (trackZ > 0) {
             nextSlide.setText("True: Z");
            // Log.i("Flow", "Next Slide: Z");
-            trackZ = 0;
+            //trackZ = 0;
         }
     }
 }
