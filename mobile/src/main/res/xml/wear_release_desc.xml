@@ -1,0 +1,5 @@
+<wearableApp package="ie.johndoyle.flow">
+  <versionCode>1</versionCode>
+  <versionName>1.0</versionName>
+  <rawPathResId>wear_release</rawPathResId>
+</wearableApp>

@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
 
-
 android {
-    compileSdkVersion 20
+    compileSdkVersion 9
     buildToolsVersion '20.0.0'
 
     defaultConfig {
@@ -31,6 +30,5 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.google.android.support:wearable:1.1.0'
-    compile 'com.google.android.gms:play-services-wearable:6.5.87'
+    wearApp files('/Users/johndoyle/AndroidStudioProjects/Flow/wear/build/outputs/apk/wear-release.apk')
 }
